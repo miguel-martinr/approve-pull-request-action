@@ -1,5 +1,5 @@
 name: Approve Pull Request made by Repo Owner
-author: juliangruber
+author: miguel-martinr
 description: 'A GitHub Action for approving pull requests made by the repo owner'
 branding:
   icon: 'git-pull-request'
