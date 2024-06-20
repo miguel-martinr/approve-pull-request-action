@@ -5,22 +5,22 @@ const github = require('@actions/github')
 
 const main = async () => {
   const token = core.getInput('github-token')
-  const number = core.getInput('number')
-  const repoString = core.getInput('repo')
+  const octokit = github.getOctokit(token)
 
-  let repoObject
-  if (repoString) {
-    const [owner, repo] = repoString.split('/')
-    repoObject = { owner, repo }
-  } else {
-    repoObject = github.context.repo
+  const repoObject = github.context.repo
+  const prOwner = github.context.payload.pull_request.user.login
+
+  // Approve PR only if the PR is created by the owner of the repo
+  if (repoObject.owner !== prOwner) {
+    core.info('PR is not created by the owner of the repo')
+    return
   }
 
-  const octokit = github.getOctokit(token)
+  const prNumber = github.context.payload.pull_request.number
 
   await octokit.rest.pulls.createReview({
     ...repoObject,
-    pull_number: number,
+    pull_number: prNumber,
     event: 'APPROVE'
   })
 }

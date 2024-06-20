@@ -1,10 +1,10 @@
 {
-  "name": "approve-pull-request-action",
+  "name": "approve-pull-request-owner-action",
   "private": true,
   "version": "2.0.6",
   "license": "MIT",
-  "description": "GitHub Action for approving pull requests",
-  "repository": "juliangruber/approve-pull-request-action",
+  "description": "GitHub Action for approving pull requests made by the repo owner",
+  "repository": "miguel-martinr/approve-pull-request-owner-action",
   "scripts": {
     "test": "prettier-standard index.js && standard index.js",
     "build": "ncc build index.js",

@@ -1,19 +1,13 @@
-name: Approve Pull Request
+name: Approve Pull Request made by Repo Owner
 author: juliangruber
-description: 'A GitHub Action for approving pull requests'
+description: 'A GitHub Action for approving pull requests made by the repo owner'
 branding:
   icon: 'git-pull-request'
   color: green
 inputs:
   github-token:
     description: 'GitHub Token'
-    required: true
-  number:
-    description: 'Pull Request number'
-    required: true
-  repo:
-    description: 'Pull Request repo in owner/repo format'
-    required: false
+    required: true  
 runs:
   using: 'node20'
   main: 'dist/index.js'
