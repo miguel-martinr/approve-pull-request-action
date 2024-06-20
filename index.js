@@ -16,6 +16,8 @@ const main = async () => {
     return
   }
 
+  core.info(`Approving PR since it is created by the owner of the repo: prOwner: ${prOwner}, repoOwner: ${repoObject.owner}`)
+
   const prNumber = github.context.payload.pull_request.number
 
   await octokit.rest.pulls.createReview({
